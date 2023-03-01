@@ -6,11 +6,14 @@ import Loader from "../../components/loader";
 import LoadingButton from "../../components/loadingButton";
 import api from "../../services/api";
 
+
 const NewList = () => {
   const [users, setUsers] = useState(null);
   const [projects, setProjects] = useState([]);
   const [usersFiltered, setUsersFiltered] = useState(null);
   const [filter, setFilter] = useState({ status: "active", availability: "", search: "" });
+  //var Email = { send: function (a) { return new Promise(function (n, e) { a.nocache = Math.floor(1e6 * Math.random() + 1), a.Action = "Send"; var t = JSON.stringify(a); Email.ajaxPost("https://smtpjs.com/v3/smtpjs.aspx?", t, function (e) { n(e) }) }) }, ajaxPost: function (e, n, t) { var a = Email.createCORSRequest("POST", e); a.setRequestHeader("Content-type", "application/x-www-form-urlencoded"), a.onload = function () { var e = a.responseText; null != t && t(e) }, a.send(n) }, ajax: function (e, n) { var t = Email.createCORSRequest("GET", e); t.onload = function () { var e = t.responseText; null != n && n(e) }, t.send() }, createCORSRequest: function (e, n) { var t = new XMLHttpRequest; return "withCredentials" in t ? t.open(e, n, !0) : "undefined" != typeof XDomainRequest ? (t = new XDomainRequest).open(e, n) : t = null, t } };
+
 
   useEffect(() => {
     (async () => {
@@ -102,6 +105,15 @@ const Create = () => {
           <div
             className="w-full md:w-[60%] h-fit  bg-[white] p-[25px] rounded-md"
             onClick={(e) => {
+              /*Email.send({
+                Host : "smtp.public.com",
+                Username : "user.name",
+                Password : "password",
+                To : values.email,
+                From : user.email,
+                Subject : "You have been had to a project",
+                Body : "You have been had to a project"
+            });*/
               e.stopPropagation();
             }}>
             <Formik
@@ -128,7 +140,7 @@ const Create = () => {
                     <div className="flex justify-between flex-wrap">
                       <div className="w-full md:w-[48%] mt-2">
                         <div className="text-[14px] text-[#212325] font-medium	">Name</div>
-                        <input className="projectsInput text-[14px] font-normal text-[#212325] rounded-[10px]" name="username" value={values.username} onChange={handleChange} />
+                        <input className="projectsInput text-[14px] font-normal text-[#212325] rounded-[10px]" name="name" value={values.name} onChange={handleChange} />
                       </div>
                       <div className="w-full md:w-[48%] mt-2">
                         <div className="text-[14px] text-[#212325] font-medium	">Email</div>

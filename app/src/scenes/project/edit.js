@@ -13,7 +13,7 @@ export default function EditProject() {
   const [bufferOtherLink, setBufferOtherLink] = useState("");
   const [bufferOtherLinkLabel, setBufferOtherLinkLabel] = useState("");
   const { id } = useParams();
-
+  //console.log(id);
   useEffect(() => {
     (async () => {
       const { data: u } = await api.get(`/project/${id}`);
@@ -30,7 +30,7 @@ export default function EditProject() {
     toast.success("successfully removed!");
     history.push("/projects");
   }
-
+  //console.log(project);
   if (!project) return <Loader />;
   return (
     <div>
